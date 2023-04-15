@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-r91@$vr&rxue(l=9-ywf#2gcv#_82=cetyflznf%j1burr9dyl
 CSRF_TRUSTED_ORIGINS = ['https://web-production-67fa.up.railway.app']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['craman.com.np', 'web-production-67fa.up.railway.app']
 # CSRF_TRUSTED_ORIGINS=['https://*.craman.com.np', 'https://web-production-67fa.up.railway.app']
