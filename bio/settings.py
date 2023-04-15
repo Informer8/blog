@@ -21,15 +21,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r91@$vr&rxue(l=9-ywf#2gcv#_82=cetyflznf%j1burr9dyl'
+#'django-insecure-r91@$vr&rxue(l=9-ywf#2gcv#_82=cetyflznf%j1burr9dyl'
+SECRET_KEY = os.environ.get("SECRET_KEY", 'dataspYiSaBadJOB-8bd@$vgb&xu125=9-ywy2*c7v#_82=cabcdefgf%jhi230vdff')
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-67fa.up.railway.app']
+# CSRF_TRUSTED_ORIGINS = ['https://web-production-67fa.up.railway.app']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['craman.com.np', 'web-production-67fa.up.railway.app']
-# CSRF_TRUSTED_ORIGINS=['https://*.craman.com.np', 'https://web-production-67fa.up.railway.app']
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
+if RENDER_EXTERNAL_HOSTNAME:    
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# ALLOWED_HOSTS = ['craman.com.np', 'web-production-67fa.up.railway.app']
 
 # Application definition
 
@@ -85,22 +91,23 @@ WSGI_APPLICATION = 'bio.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Informer8/bio_posts',
-        'USER': 'Informer8',
-        'PASSWORD': 'v2_433nD_dStNLa8aN3Wnsd4jw8nL9w2',
-        'HOST': 'db.bit.io',
-        'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Informer8/bio_posts',
+#         'USER': 'Informer8',
+#         'PASSWORD': 'v2_433nD_dStNLa8aN3Wnsd4jw8nL9w2',
+#         'HOST': 'db.bit.io',
+#         'PORT': '5432'
+#     }
+# }
 
-# DATABASES['default'] = dj_database_url.config(
-#     default='postgres://Informer8:v2_433nD_dStNLa8aN3Wnsd4jw8nL9w2@db.bit.io:5432/Informer8/bio_posts',
-#     conn_max_age=600,
-#     conn_health_checks=True,
-# )
+DATABASES = {
+    'default': dj_database_url.config(
+        conn_max_age=600,
+        conn_health_checks=True,
+    ),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
