@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
 from django.conf import settings
+from django.urls import path, re_path
 from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.views.static import serve
 from mybio.views import home_page, detail, CategoryView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', home_page, name="home"),
@@ -27,7 +28,8 @@ urlpatterns = [
     path('<slug:slug>/', detail, name='detail'),
     path('category/<str:tags>/', CategoryView, name='category'),
     re_path(r'^image/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
-    # re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
 
-handler404 = "mybio.views.error_page"
+urlpatterns += staticfiles_urlpatterns()
+
+# handler404 = "mybio.views.error_page"
