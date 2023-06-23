@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 
 # if RENDER_EXTERNAL_HOSTNAME:    
 #     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-ALLOWED_HOSTS = ['craman.com.np']
+# ALLOWED_HOSTS = ['craman.com.np']
 
 # Application definition
 INSTALLED_APPS = [

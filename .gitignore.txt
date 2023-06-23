@@ -1,6 +1,7 @@
 /static/**
 !/static
 __pycache__
+/admin_credentials.txt
 */migrations/**
 !*/migrations
 !*/migrations/__init__.py
