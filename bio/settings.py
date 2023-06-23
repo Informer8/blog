@@ -28,13 +28,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY", 'django-insecure-r91@$vr&rxue(l=9-ywf#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
-
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-
 # if RENDER_EXTERNAL_HOSTNAME:    
 #     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-# ALLOWED_HOSTS = ['craman.com.np']
+ALLOWED_HOSTS = ['craman.com.np']
 
 # Application definition
 INSTALLED_APPS = [
