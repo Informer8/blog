@@ -36,5 +36,5 @@ class CommentForm(forms.ModelForm):
 			'name' : forms.TextInput(attrs={"name": "name", "type": "text", 'placeholder': 'Name'}),
 			'subject' : forms.TextInput(attrs={"name": "url", "type": "text", "placeholder": "Subject"}),
 			'email' : forms.EmailInput(attrs={"name": "email", "type": "email", "placeholder": "Email"}),
-			'body' : forms.Textarea(attrs={"id": "comment-reply", "name": "comment", "rows": "5", "placeholder": "Type Here Your Comment"}),
+			'body' : forms.Textarea(attrs={"id": "comment-reply", "name": "comment", "rows": "5", "placeholder": "Type Your Comment Here"}),
 		}

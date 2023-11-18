@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
 from .models import Post, Comment, Category
 from .forms import CommentForm, ContactForm
+from django.http import HttpResponse
 from django.db.models import Count
 
 # Create your views here.
@@ -23,7 +23,7 @@ def home_page(request):
 		'query' : post,
 		'contact_form': contact_form
 	}
-	return render(request, "bio.html", context)
+	return render(request, "home.html", context)
 
 def detail(request, slug):
 	post_qs  	= Post.objects.filter(status=1, slug=slug)
@@ -58,7 +58,7 @@ def detail(request, slug):
 		'comment_form': comment_form,
 		'categories'  : categories
 	}
-	return render(request, "post.html", context)
+	return render(request, "article_page.html", context)
 
 def CategoryView(request, tags):
 	slug = Category.objects.get(slug=tags)
@@ -69,7 +69,7 @@ def CategoryView(request, tags):
 		'tags': category_name,
 		'category_posts': category_posts
 	}
-	return render(request, 'categories.html', context)
+	return render(request, 'category_page.html', context)
 
 def error_page(request, exception):
 	return render(request, '404.html')
